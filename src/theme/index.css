@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ===== Color Scheme Variables ===== */
+:root {
+  --color-primary: #1a365d;
+  --color-primary-light: #2a4a7f;
+  --color-primary-dark: #0f2440;
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-500: #1a365d;
+  --color-primary-600: #152d4f;
+  --color-primary-700: #0f2440;
+  --color-primary-800: #0a1a30;
+  --color-primary-900: #051020;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  --color-bg-page: #f0f2f5;
+  --color-bg-card: #ffffff;
+  --color-bg-sidebar: #001529;
+
+  --color-text-primary: #1a202c;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
+
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Base Styles ===== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+/* ===== Animation Keyframes ===== */
+
+/* Typing cursor blink */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Typing text reveal */
+@keyframes typing {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 2000px;
+    opacity: 1;
+  }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Pulse glow for active indicators */
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 4px rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);
+  }
+}
+
+/* Utility classes for animations */
+.animate-typing-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Chat message typing effect */
+.typing-effect {
+  overflow: hidden;
+  animation: typing 0.6s ease-out forwards;
+}
+
+.typing-effect::after {
+  content: "▎";
+  display: inline;
+  color: var(--color-primary);
+  animation: blink 0.8s step-end infinite;
+}
+
+.typing-effect.done::after {
+  display: none;
+}
